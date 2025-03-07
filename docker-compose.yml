@@ -1,14 +1,38 @@
 services:
   api:
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "${API_PORT:-8000}:${API_PORT:-8000}"
     volumes:
-      - ./backend:/app
+      - '/data/coolify/applications/l8ok4kk8s8sw0cwwww8ggwgc/backend:/app'
     env_file:
       - .env
     environment:
-      - ENVIRONMENT=${ENVIRONMENT:-development} # Default to development if not set
+      ENVIRONMENT: '${ENVIRONMENT:-development}'
+      COOLIFY_BRANCH: '"main"'
+      COOLIFY_RESOURCE_UUID: l8ok4kk8s8sw0cwwww8ggwgc
+      COOLIFY_CONTAINER_NAME: api-l8ok4kk8s8sw0cwwww8ggwgc-131109356174
     restart: unless-stopped
+    container_name: api-l8ok4kk8s8sw0cwwww8ggwgc-131109356174
+    labels:
+      - coolify.managed=true
+      - coolify.version=4.0.0-beta.395
+      - coolify.applicationId=17
+      - coolify.type=application
+      - coolify.name=api-l8ok4kk8s8sw0cwwww8ggwgc-131109356174
+      - coolify.resourceName=ahmedkhaleel2004gitdiagrammain-vgg4c84oo0cggc0o4k4og80g
+      - coolify.projectName=gitdigrams
+      - coolify.serviceName=ahmedkhaleel2004gitdiagrammain-vgg4c84oo0cggc0o4k4og80g
+      - coolify.environmentName=production
+      - coolify.pullRequestId=0
+    networks:
+      l8ok4kk8s8sw0cwwww8ggwgc: null
+volumes: {  }
+networks:
+  l8ok4kk8s8sw0cwwww8ggwgc:
+    name: l8ok4kk8s8sw0cwwww8ggwgc
+    external: true
+configs: {  }
+secrets: {  }
